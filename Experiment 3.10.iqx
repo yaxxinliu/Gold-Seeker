@@ -1,0 +1,992 @@
+﻿-----------------------------------------------------------------------------------------------------
+        Pre-Exposure   Instructions
+-----------------------------------------------------------------------------------------------------
+< picture Instru>
+/ items = ("Slide1.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_IO>
+/ items = ("Slide2.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_colour>
+/ items = ("Slide3.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_description>
+/ items = ("Slide4.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_door>
+/ items = ("Slide5.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_destination>
+/ items = ("Slide6.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_practice_start>
+/ items = ("Slide7.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_real_start>
+/ items = ("Slide8.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_completion>
+/ items = ("Slide10.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture Instru_break>
+/ items = ("Slide12.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+<text tooslow>
+/items= ("Too Slow")
+/ fontstyle = ("Arial", 48pt, true)
+/ txbgcolor = (transparent)
+/ erase = true(transparent)
+/position= (50%,50%)
+</text>
+
+<trial tooslow>
+/ ontrialbegin = [
+	trial.tooslow.resetstimulusframes()
+]
+/ stimulustimes = [0=eraser,tooslow; 2500 = eraser]
+/ responseinterrupt = trial
+/ timeout = 2500
+</trial>
+
+
+<trial Instru>
+/ stimulustimes = [0= Instru]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_IO>
+/ stimulustimes = [0= Instru_IO]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_colour>
+/ stimulustimes = [0= Instru_colour]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_description>
+/ stimulustimes = [0= Instru_description]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_door>
+/ stimulustimes = [0= Instru_door]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_destination>
+/ stimulustimes = [0= Instru_destination]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_practice_start>
+/ stimulustimes = [0= Instru_practice_start]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_real_start>
+/ stimulustimes = [0= Instru_real_start]
+/ validresponse = (57)
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_break>
+/ stimulustimes = [0= Instru_break]
+/ validresponse = (57)
+/ trialduration = 5000
+/ responseinterrupt = frames
+</trial>
+
+<trial Instru_completion>
+/ stimulustimes = [0= Instru_completion]
+/ validresponse = (57)
+/ trialduration = 5000
+/ responseinterrupt = frames
+</trial>
+-----------------------------------------------------------------------------------------------------------
+        Familarization Block
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------
+Indoors vs. Outdoors
+-----------------------------------------------------------------------------------------------------------
+
+images that will be presented
+< item fam_scene>
+/ 1 = "001.png"
+/ 2 = "002.png"
+</item>
+
+< picture fam_scene>
+/ items = fam_scene
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+Response options
+< text indoors>
+/ items = ("indoors <")
+/ fontstyle = ("Arial", 36pt, true)
+/ position = (25%,80%)
+</text>
+
+< text outdoors>
+/ items = ("Outdoors >")
+/ fontstyle = ("Arial", 36pt, true)
+/ position = (75%,80%)
+</text>
+
+<trial fam_scene_IO>
+/ stimulustimes = [0=fixation; 1000=fam_scene, indoors, outdoors; 3000=dummy]
+/ validresponse = (203,205,noresponse)
+/ trialduration = 3000
+/ beginresponsetime = 1000
+/ responseinterrupt = frames
+/ responsetrial = (noresponse, tooslow) 
+</trial>
+
+
+<block PreExpose_IO>
+/ trials = [1= noreplace(Instru);2=noreplace(Instru_IO); 3-4=noreplace(fam_scene_IO)]
+</block>
+
+-----------------------------------------------------------------------------------------------------
+Colour
+-----------------------------------------------------------------------------------------------------
+<textbox colour>
+/ caption = "Please describe the main colour in this picture. Press continue when you are done."
+/ fontstyle = ("Times New Roman", 2.69%, false, false, false, false, 5, 1)
+/ multiline = false
+/ maxchars = 1000
+/ textboxsize = (12%, 5%)
+/ required = false
+/ position = (25%, 80%)
+</textbox>
+
+<surveypage colour>
+/ stimulusframes = [1 = fam_scene]
+/ questions = [1 = colour]
+/ showbackbutton = false
+/ showpagenumbers = false
+/ showquestionnumbers = false
+</surveypage>
+
+<block colour>
+/ trials = [1= noreplace(Instru_colour);2-4=noreplace(colour)]
+</block>
+
+
+----------------------------------------------------------------------------------------------------------
+Description
+----------------------------------------------------------------------------------------------------------
+
+<textbox description>
+/ caption = "Please describe the picture using one or more words. Press continue when you are done."
+/ fontstyle = ("Times New Roman", 2.69%, false, false, false, false, 5, 1)
+/ multiline = false
+/ maxchars = 1000
+/ textboxsize = (25%, 4%)
+/ required = false
+/ position = (25%, 80%)
+</textbox>
+
+<surveypage description>
+/ stimulusframes = [1 = fam_scene]
+/ questions = [1 = description]
+/ showbackbutton = false
+/ showpagenumbers = false
+/ showquestionnumbers = false
+</surveypage>
+
+<block description>
+/ trials = [1= noreplace(Instru_description); 2-3 = noreplace(description)]
+</block>
+
+--------------------------------------------------------------------------------------------------------------
+   Door selection Practice Trial
+--------------------------------------------------------------------------------------------------------------
+Fixation cross
+< text fixation>
+/ items = ("+")
+/ fontstyle = ("Arial", 60pt, true)
+/ position = (50%,50%)
+/ erase = true(transparent)
+/ txbgcolor = (transparent)
+</text>
+
+< text dummy>
+/ items = ("x")
+/ color = white
+/ position = (0,0)
+</text>
+
+< values>
+/ stimulus = "."
+</values>
+
+
+< picture practiceroom>
+/ items = ("practiceroom.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+/ erase = false
+</picture>
+
+<picture practiceroom_door1>
+/ items = ("practiceroom_h1.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture practiceroom_door2>
+/ items = ("practiceroom_h2.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture practiceroom_door3>
+/ items = ("practiceroom_h3.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture practiceroom_door4>
+/ items = ("practiceroom_h4.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<item scene_practiceRoom_door1>
+/ 1 = "o_0.png"
+</item>
+
+<item scene_practiceRoom_door1_coin>
+/ 1 = "o_0_1.png"
+</item>
+
+<item scene_practiceRoom_door2>
+/ 1 = "o_0.png"
+</item>
+
+<item scene_practiceRoom_door2_coin>
+/ 1 = "o_0_1.png"
+</item>
+
+<item scene_practiceRoom_door3>
+/ 1 = "o_0.png"
+</item>
+
+<item scene_practiceRoom_door3_coin>
+/ 1 = "o_0_1.png"
+</item>
+
+<item scene_practiceRoom_door4>
+/ 1 = "o_0.png"
+</item>
+
+<item scene_practiceRoom_door4_coin>
+/ 1 = "o_0_1.png"
+</item>
+
+< picture scene_practiceRoom_door1>
+/ items = scene_practiceRoom_door1
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door1_coin>
+/ items = scene_practiceRoom_door1_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door2>
+/ items = scene_practiceRoom_door2
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door2_coin>
+/ items = scene_practiceRoom_door2_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door3>
+/ items = scene_practiceRoom_door2
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door3_coin>
+/ items = scene_practiceRoom_door2_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door4>
+/ items = scene_practiceRoom_door2
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_practiceRoom_door4_coin>
+/ items = scene_practiceRoom_door2_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+<trial practiceRoom_Select>
+/ stimulustimes = [0=fixation; 1000=practiceroom]
+/ validresponse = ("1","2","3","4")
+/ trialduration = 2500
+/ beginresponsetime = 1000
+/ responseinterrupt = frames
+/ branch = [
+	if (trial.practiceRoom_Select.response == 2)
+		trial.practiceroom_door1_selected
+]
+/ branch = [
+	if (trial.practiceRoom_Select.response == 3)
+		trial.practiceroom_door2_selected
+]
+/ branch = [
+	if (trial.practiceRoom_Select.response == 4)
+		trial.practiceroom_door3_selected
+]
+/ branch = [
+	if (trial.practiceRoom_Select.response == 5)
+		trial.practiceroom_door4_selected
+]
+/ responsetrial = (noresponse, trial.tooslow)
+</trial>
+
+<trial practiceroom_door1_selected>
+/ stimulustimes = [0= practiceroom_door1; 750 = eraser, travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.practiceroom_door1_selected2]
+</trial>
+
+<trial practiceroom_door2_selected>
+/ stimulustimes = [0= practiceroom_door2; 750 = eraser, travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.practiceroom_door2_selected2]
+</trial>
+
+<trial practiceroom_door3_selected>
+/ stimulustimes = [0= practiceroom_door3; 750 = eraser, travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.practiceroom_door3_selected2]
+</trial>
+
+
+<trial practiceroom_door4_selected>
+/ stimulustimes = [0= practiceroom_door4; 750 = eraser, travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.practiceroom_door4_selected2]
+</trial>
+
+
+<trial practiceroom_door1_selected2>
+/ stimulustimes = [0= scene_practiceRoom_door1;  1250= scene_practiceRoom_door1_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_practiceRoom_door1_coin, coin_sound, 0)
+</trial>
+
+<trial practiceroom_door2_selected2>
+/ stimulustimes = [0= scene_practiceRoom_door2;  1250= scene_practiceRoom_door2_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_practiceRoom_door2_coin, coin_sound, 0)
+</trial>
+
+<trial practiceroom_door3_selected2>
+/ stimulustimes = [0= scene_practiceRoom_door3;  1250= scene_practiceRoom_door3_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_practiceRoom_door3_coin, coin_sound, 0)
+</trial>
+
+<trial practiceroom_door4_selected2>
+/ stimulustimes = [0= scene_practiceRoom_door4;  1250= scene_practiceRoom_door4_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_practiceRoom_door4_coin, coin_sound, 0)
+</trial>
+
+ <block practice_selectDoor>
+/ trials = [1 =noreplace(Instru_door); 2=noreplace(Instru_destination);3=noreplace(Instru_practice_start); 4-7=replace(practiceRoom_select)]
+</block>
+-------------------------------------------------------------------------------------------------------------
+   Door selection Task
+-------------------------------------------------------------------------------------------------------------
+
+< picture room1>
+/ items = ("room1.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+/ erase = false
+</picture>
+
+< picture room2>
+/ items = ("room2.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+/ erase = false
+</picture>
+
+
+<picture room1_door1>
+/ items = ("room1_h1.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room1_door2>
+/ items = ("room1_h2.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room1_door3>
+/ items = ("room1_h3.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room1_door4>
+/ items = ("room1_h4.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room2_door1>
+/ items = ("room2_h1.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>c
+
+<picture room2_door2>
+/ items = ("room2_h2.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room2_door3>
+/ items = ("room2_h3.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<picture room2_door4>
+/ items = ("room2_h4.jpg")
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace
+</picture>
+
+<item scene_room1_door1>
+/ 1 = "o_0.png"
+</item>
+
+<item scene_room1_door1_coin>
+/ 1 = "o_0_1.png"
+</item>
+
+<item scene_room1_door2>
+/ 1 = "o_4.png"
+</item>
+
+<item scene_room1_door2_coin>
+/ 1 = "o_4_1.png"
+</item>
+
+<item scene_room1_door3>
+/ 1 = "o_5.png"
+</item>
+
+<item scene_room1_door3_coin>
+/ 1 = "o_5_1.png"
+</item>
+
+<item scene_room1_door4>
+/ 1 = "o_6.png"
+</item>
+
+<item scene_room1_door4_coin>
+/ 1 = "o_6_1.png"
+</item>
+
+<item scene_room2_door1>
+/ 1 = "o_6.png"
+</item>
+
+<item scene_room2_door1_coin>
+/ 1 = "o_6_1.png"
+</item>
+
+<item scene_room2_door2>
+/ 1 = "o_4.png"
+</item>
+
+<item scene_room2_door2_coin>
+/ 1 = "o_4_1.png"
+</item>
+
+<item scene_room2_door3>
+/ 1 = "o_5.png"
+</item>
+
+<item scene_room2_door3_coin>
+/ 1 = "o_5_1.png"
+</item>
+
+<item scene_room2_door4>
+/ 1 = "o_3.png"
+</item>
+
+<item scene_room2_door4_coin>
+/ 1 = "o_3_1.png"
+</item>
+
+<shape eraser>
+/ shape = rectangle
+/ color = white
+/ position = (50%, 50%)
+/ size = (100%,100%)
+</shape>
+
+< picture scene_room1_door1>
+/ items = scene_room1_door1
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door1_coin>
+/ items = scene_room1_door1_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door2>
+/ items = scene_room1_door2
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door2_coin>
+/ items = scene_room1_door2_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door3>
+/ items = scene_room1_door3
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door3_coin>
+/ items = scene_room1_door3_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door4>
+/ items = scene_room1_door4
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room1_door4_coin>
+/ items = scene_room1_door4_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door1>
+/ items = scene_room2_door1
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door1_coin>
+/ items = scene_room2_door1_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door2_coin>
+/ items = scene_room2_door2_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door2>
+/ items = scene_room2_door2
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door3>
+/ items = scene_room2_door3
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+
+< picture scene_room2_door3_coin>
+/ items = scene_room2_door3_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door4>
+/ items = scene_room2_door4
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< picture scene_room2_door4_coin>
+/ items = scene_room2_door4_coin
+/ position = (50%,40%)
+/ size = (1280px,1280px)
+/ select = noreplace 
+</picture>
+
+< video travel_background>
+/ items = travel_background
+/ position = (50%,40%)
+/ size = (1280px, 1280px)
+/ erase = true(transparent)
+/ playthrough = false
+</video>
+
+<item travel_background>
+/ 1 = "tunnel.mov"
+</item>
+
+*****Sound effect*****
+<sound coin_sound>
+/ items = ("coin_sound.wav")
+/ volume = 0
+</sound>
+
+<trial Room1_Select>
+/ stimulustimes = [0=fixation; 1000=room1]
+/ validresponse = ("1","2","3","4")
+/ trialduration = 2500
+/ beginresponsetime = 1000
+/ responseinterrupt = frames
+/ branch = [
+	if (trial.Room1_Select.response == 2)
+		trial.room1_door1_selected
+]
+/ branch = [
+	if (trial.Room1_Select.response == 3)
+		trial.room1_door2_selected
+]
+/ branch = [
+	if (trial.Room1_Select.response == 4)
+		trial.room1_door3_selected
+]
+/ branch = [
+	if (trial.Room1_Select.response == 5)
+		trial.room1_door4_selected
+]
+/ responsetrial = (noresponse, trial.tooslow) 
+/ ontrialend = [
+	trial.Room1_Select.resetstimulusframes()
+]
+</trial>
+
+
+<trial Room2_Select>
+/ stimulustimes = [0=fixation; 1000=room2]
+/ validresponse = ("1","2","3","4")
+/ trialduration = 2500
+/ beginresponsetime = 1000
+/ responseinterrupt = frames
+/ correctresponse = (trial.Room2_Select.response)
+/ branch = [
+	if (trial.Room2_Select.response == 2)
+		trial.room2_door1_selected
+]
+/ branch = [
+	if (trial.Room2_Select.response == 3)
+		trial.room2_door2_selected
+]
+/ branch = [
+	if (trial.Room2_Select.response == 4)
+		trial.room2_door3_selected
+]
+/ branch = [
+	if (trial.Room2_Select.response == 5)
+		trial.room2_door4_selected
+]
+/ responsetrial = (noresponse, trial.tooslow) 
+/ ontrialend = [
+	trial.Room2_Select.resetstimulusframes()
+]
+</trial>
+
+
+<trial room1_door1_selected>
+/ stimulustimes = [0= room1_door1; 750 = eraser, travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door1_selected2]
+</trial>
+
+<trial room1_door2_selected>
+/ stimulustimes = [0= room1_door2; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door2_selected2]
+</trial>
+
+<trial room1_door3_selected>
+/ stimulustimes = [0= room1_door3; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door3_selected2]
+</trial>
+
+
+<trial room1_door4_selected>
+/ stimulustimes = [0= room1_door4; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door4_selected2]
+</trial>
+
+
+<trial room1_door1_selected2>
+/ stimulustimes = [0= scene_room1_door1;  1250= scene_room1_door1_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room1_door1_coin, coin_sound, 0)
+</trial>
+
+<trial room1_door2_selected2>
+/ stimulustimes = [0= scene_room1_door2;  1250= scene_room1_door2_coin; 2250=dummy]
+/ trialduration = 4000
+/ responseinterrupt = frames
+/ beginresponsetime = 1250
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room1_door2_coin, coin_sound, 0)
+</trial>
+
+<trial room1_door3_selected2>
+/ stimulustimes = [0= scene_room1_door3;  1250= scene_room1_door3_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room1_door3_coin, coin_sound, 0)
+</trial>
+
+<trial room1_door4_selected2>
+/ stimulustimes = [0= scene_room1_door4;  1250= scene_room1_door4_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room1_door4_coin, coin_sound, 0)
+</trial>
+
+<trial room2_door1_selected>
+/ stimulustimes = [0= room2_door1; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door1_selected2]
+</trial>
+
+<trial room2_door2_selected>
+/ stimulustimes = [0= room2_door2; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door2_selected2]
+</trial>
+
+<trial room2_door3_selected>
+/ stimulustimes = [0= room2_door3; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door3_selected2]
+</trial>
+
+<trial room2_door4_selected>
+/ stimulustimes = [0= room2_door4; 750 = eraser,travel_background]
+/ trialduration = 2000
+/ responseinterrupt = frames
+/ branch = [trial.room1_door4_selected2]
+</trial>
+
+<trial room2_door1_selected2>
+/ stimulustimes = [0= scene_room2_door1;  1250= scene_room2_door1_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room2_door1_coin, coin_sound, 0)
+</trial>
+
+<trial room2_door2_selected2>
+/ stimulustimes = [0= scene_room2_door2;  1250= scene_room2_door2_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room2_door2_coin, coin_sound, 0)
+</trial>
+
+<trial room2_door3_selected2>
+/ stimulustimes = [0= scene_room2_door3;  1250= scene_room2_door3_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room2_door3_coin, coin_sound, 0)
+</trial>
+
+<trial room2_door4_selected2>
+/ stimulustimes = [0= scene_room2_door4;  1250= scene_room2_door4_coin; 2250=dummy]
+/ trialduration = 4000
+/ beginresponsetime = 1250
+/ responseinterrupt = frames
+/ inputdevice=mouse
+/ validresponse=(lbuttondown)
+/ correctresponse=(lbuttondown)
+/ responsemessage = (scene_room2_door4_coin, coin_sound, 0)
+</trial>
+ 
+<block selectDoor>
+/ trials = [1=noreplace(Instru_real_start); 2-8=replace(Room1_Select,Room2_Select); 9 =noreplace(Instru_completion)]
+</block>
+
+<expt Test>
+/ blocks = [1=PreExpose_IO; 2=colour; 3=description; 4=practice_selectDoor; 5=selectDoor]
+</expt>
